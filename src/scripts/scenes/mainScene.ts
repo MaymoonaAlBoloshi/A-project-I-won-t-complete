@@ -1,5 +1,4 @@
 import FpsText from '../objects/fpsText'
-
 export default class MainScene extends Phaser.Scene {
   fpsText
 
@@ -8,11 +7,21 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    var style = { font: "bold 100px GlitchFont", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
     this.fpsText = new FpsText(this);
 
-    this.add.image(400, 300, 'background');
-    this.add.text(window.innerWidth - 200, 200, 'Angry Dev', style)
+    this.add.image(330, 200, 'background');
+    this.add.image(800, 500, 'layer_7');
+    // this.add.image(260, 0, 'layer_6');
+    // this.add.image(260, 0, 'layer_5');
+    this.add.image(330, 200, 'layer_2');
+    this.add.image(330, 200, 'layer_1');
+    // this.add.image(260, 0, 'layer_4');
+    this.add.image(window.innerWidth + 100, 200, 'title')
+    this.add.image(window.innerWidth + 100, 450, 'start-btn')
+      .setInteractive()
+      .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+        this.scene.start('Level_1')
+      })
 
 
     // display the Phaser.VERSION
@@ -27,5 +36,4 @@ export default class MainScene extends Phaser.Scene {
   }
 }
 
-// TODO make this mine 
-// add new font and use
+
